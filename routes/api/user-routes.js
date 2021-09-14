@@ -38,7 +38,7 @@ router.get('/:id', (req, res) => {
 
 // POST /api/users
 router.post('/', (req, res) => {
-    // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
+    // expects {username: 'rizzel', email: 'rizzel@gmail.com', password: 'password1234'}
     User.create({
         username: req.body.username,
         email: req.body.email,
@@ -50,6 +50,34 @@ router.post('/', (req, res) => {
         res.status(500).json(err);
     });
 });
+
+// to verify user's identity using the user's email address and password
+// login route for authentication
+// http://localhost:3001/api/users/login
+router.post('/login', (req, res) => {
+    // expects {email: 'rizzel@gmail.com', password: 'password1234'}
+    User.findOne({
+        where: {
+        email: req.body.email
+        }
+    }).then(dbUserData => {
+        if (!dbUserData) {
+            res.status(400).json({ message: 'No user with that email address!' });
+            return;
+        }
+
+        // Verify user
+        const validPassword = dbUserData.checkPassword(req.body.password);
+        if (!validPassword) {
+            res.status(400).json({ message: 'Incorrect password!' });
+            return;
+        }
+        
+        res.json({ user: dbUserData, message: 'You are now logged in!' });
+  });  
+
+  
+  })  
 
 // PUT /api/users/1
 router.put('/:id', (req, res) => {
