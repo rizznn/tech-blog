@@ -1,13 +1,14 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const { Post, User, Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // get all posts
 router.get('/', (req, res) => {
     console.log('======================');
     Post.findAll({
         order: [['created_at', 'DESC']],
-        attributes: ['id', 'post_url', 'title', 'created_at'],
+        attributes: ['id', 'post_url', 'title', 'contents', 'created_at'],
         include: [
           // include the Comment model
           {
@@ -37,7 +38,7 @@ router.get('/:id', (req, res) => {
       where: {
         id: req.params.id
       },
-      attributes: ['id', 'post_url', 'title', 'created_at'],
+      attributes: ['id', 'post_url', 'title', 'contents', 'created_at'],
       include: [
         {
             model: Comment,
@@ -67,10 +68,11 @@ router.get('/:id', (req, res) => {
 });
 
 // create a post
-router.post('/', (req, res) => {
-    // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
+router.post('/', withAuth, (req, res) => {
+    // expects {title: 'Taskmaster goes public!', contents: 'Taskmaster is an app to organize tasks', post_url: 'https://taskmaster.com/press', user_id: 1}
     Post.create({
       title: req.body.title,
+      contents: req.body.contents,
       post_url: req.body.post_url,
       user_id: req.session.user_id
     })
@@ -81,36 +83,12 @@ router.post('/', (req, res) => {
       });
 });
 
-// update a post
-router.put('/:id', (req, res) => {
-    Post.update(
-      {
-        title: req.body.title
-      },
-      {
-        where: {
-          id: req.params.id
-        }
-      }
-    )
-    .then(dbPostData => {
-        if (!dbPostData) {
-          res.status(404).json({ message: 'No post found with this id' });
-          return;
-        }
-        res.json(dbPostData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
-});
-  
 // Because we'll be updating an existing entry, the idea is to first retrieve the post instance by id, then alter the value of the title on this instance of a post
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     Post.update(
       {
-        title: req.body.title
+        title: req.body.title,
+        contents: req.body.contents
       },
       {
         where: {
@@ -132,7 +110,7 @@ router.put('/:id', (req, res) => {
 });
 
 // delete a post
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Post.destroy({
       where: {
         id: req.params.id
