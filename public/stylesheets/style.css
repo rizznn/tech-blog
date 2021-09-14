@@ -1,3 +1,8 @@
+:root {
+  --light-dark: #6f6866;
+  --dark: #231206;
+  --border-radius: .3rem;
+}
 * {
   box-sizing: border-box;
 }
@@ -41,15 +46,25 @@ button:hover {
   padding: 0;
 }
 
+.form-input {
+
+  width: 100%;
+  padding: 3%;
+  margin: 5px 0;
+  font-size: 1.2rem;
+  border: 2px solid var(--light-dark);
+  border-radius: var(--border-radius);
+}
+
 textarea, input {
   padding: .5%;
   border-radius: 5px;
   border: 1px solid #ccc;
 }
 
-textarea:focus, input:focus {
+textarea:focus, input:focus, .form-input:focus {
   outline: none;
-  /* border: 1px solid #3486eb; */
+  border: 1px solid #3486eb;
 }
 
 textarea {
@@ -78,7 +93,7 @@ header {
   border-bottom: 1px solid #ccc;
   /* justify-content: space-between; */
   padding: 0 1%;
-  background-color: #231206;
+  background-color: var(--dark);
   /* color: #D3EED3; */
 }
 
@@ -92,7 +107,7 @@ header nav {
 
 header h1 a {
   font-size: 1em;
-  color: #231206;
+  color: var(--dark);
   border: solid #D7E4C9 1px;
   background-color: #D7E4C9;
   padding: 0 10px;
@@ -130,14 +145,59 @@ main {
   background: none;
   /* color: #3486eb; */
 }
+.btn {
+  font-size: 1.3rem;
+  text-decoration:none;
+  padding: 6px 5px;
+  width: 100%;
+  display: block;
+  margin: 5px 0;
+  border-radius: var(--border-radius);
+  color: #ccdad1;
+  border: none;
+  outline: none;
+  background-color: #6f6866;
+  box-shadow: 3px 3px var(--dark);
+  transform: translate(-1px, -1px);
+}
 
-.delete-post-btn {
+/* CARDS */
+.card {
+  margin: 0 0 20px 0;
+  border: 3px solid var(--dark);
+  border-radius: .3em;
+}
+
+.card-header {
+  color:  #8f9c9c;
+  background-color: var(--dark);
+  padding: 2.5%;
+  border-radius: calc(.18rem - 1px) calc(.18rem - 1px) 0 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-body {
+  padding: 2.5%;
+}
+
+.title {
+ font-size: 1.25rem;
+ font-weight: bold;
+}
+
+.author {
+  color:  #8f9c9c;
+  font-size: small;
+}
+
+/* .delete-post-btn {
   background-color: #d41414;
-}
+} */
 
-.delete-post-btn:hover {
+/* .delete-post-btn:hover {
   background-color: #ff643d;
-}
+} */
 
 .post {
   margin-bottom: 2%;

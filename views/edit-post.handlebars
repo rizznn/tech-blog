@@ -1,4 +1,39 @@
-<article>
+ <div class="col-12">
+    <div class="card">
+        <h3 class="card-header">Edit Post</h3>
+        <form class="card-body edit-post-form">
+          <label class="post-title" for="title">Title</label>
+          <input name="post-title" class="form-input" type="text" value="{{post.title}}" />
+
+          <label class="post-contents" for="contents">Content</label>
+          <input name="post-contents" class="form-input" type="text" value="{{post.contents}}" />
+          
+          <button type="submit" class="btn">Update post</button>
+          <button type="button" class="delete-post-btn btn">Delete post</button>
+        </form>
+    </div>
+</div>
+
+
+        {{!-- <form class="edit-post-form">
+    <div>
+      <input name="post-title" type="text" value="{{post.title}}" />
+    </div>
+    <div>
+      <input name="post-contents" type="text" value="{{post.contents}}" />
+    </div>
+    <div>
+      Posted by you on {{format_date post.created_at}}
+      |
+      <a href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
+    </div>
+    <button type="submit">Update post</button>
+    <button type="button" class="delete-post-btn">Delete post</button>
+  </form> --}}
+
+
+
+{{!-- <article>
   <a href="/dashboard"> &larr; Back to dashboard</a>
   <h2>
     Edit Post
@@ -33,7 +68,7 @@
 </form>
 
 {{!-- post's current comments --}}
-{{> comments post.comments}}
+{{> comments post.comments}} --}}
 
 <script src="/javascript/edit-post.js"></script>
 <script src="/javascript/delete-post.js"></script>
