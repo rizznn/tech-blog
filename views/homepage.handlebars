@@ -11,12 +11,8 @@
   <li>
   <div class="col-12">
   <div class="card">
-    <div class="card-header">
-
-      {{!-- <a href="/dashboard/edit/{{id}}" class="edit-title">{{title}}</a> --}}
-    
-      <a href="/post/{{post.id}}">{{title}}</a>
-      {{!-- <span class="title">{{title}}</span> --}}
+    <div class="card-header home-post">
+      <a class="post-title" href="/post/{{post.id}}">{{title}}</a>
       <span class="author">Posted by {{user.username}} on {{format_date created_at}}</span>
     </div>
     <div class="card-body">
