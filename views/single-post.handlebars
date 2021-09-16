@@ -1,5 +1,5 @@
 {{!-- posts --}}
-{{> post-info post }}
+{{!-- {{> post-info post }} --}}
 
 {{!-- form and comments --}}
 {{!-- {{#if loggedIn}}
@@ -14,9 +14,19 @@
 </form>
 {{/if}} --}}
 
-{{> comments post.comments}}
+{{!-- {{> comments post.comments}}
 
 {{!-- to conditionally render the <script> element --}}
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
-{{/if}}
+{{/if}} --}}
+
+  
+<div>
+    {{#each posts}}
+    <a href="/dashboard/edit/{{id}}">
+        <span>{{title}}</span>
+        <span>{{format_date createdAt}}</span>
+    </a>
+    {{/each}}
+</div>
