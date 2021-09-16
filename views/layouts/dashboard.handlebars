@@ -42,22 +42,23 @@
         {{/if}}
       </nav>
       <h1>
-        <a href="/">Your Tech Blog</a>
+        <a href="/dashboard">Your Tech Blog</a>
       </h1>
     </header>
     <main>
       {{{ body }}}
-
     </main>
+    <footer>
+      <div>
+        <a class="add-btn" href="/dashboard/add">➕ New Post</a>
+      </div>
+    </footer>
   </div>
+
+
   {{#if loggedIn}}
-
- <footer class="footer flex-row justify-center">
-    <a href="/dashboard/new">➕ New Post</a>
-</footer>
-
 <script src="/javascript/add-post.js"></script>
-  <script src="/javascript/logout.js"></script>
+<script src="/javascript/logout.js"></script>
   {{/if}}
 </body>
 

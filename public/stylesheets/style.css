@@ -12,13 +12,10 @@ body, html {
   padding: 0;
   margin: 0;
   font-family: sans-serif;
-  /* color: #333; */
 }
 
 a {
   text-decoration: none;
-  /* color: #7e947e; */
-  /* font-weight: bold; */
   transition: color .1s;
 }
 
@@ -27,7 +24,6 @@ a {
 } */
 
 button {
-  /* background-color: #225ca3; */
   border: 0;
   padding: 1%;
   /* color: white; */
@@ -242,10 +238,12 @@ main {
   margin-bottom: 5%;
 }
 
-footer {
-  border-top: 1px solid #ccc;
+.add-btn {
   display: flex;
   justify-content: center;
+  align-items: flex-end;
   padding: 1%;
   font-size: 110%;
+  background-color: #D7E4C9; 
+  color: var(--dark);
 }

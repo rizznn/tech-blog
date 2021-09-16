@@ -28,7 +28,7 @@ router.get('/', withAuth, (req, res) => {
     .then(dbPostData => {
         // serialize data before passing to template
         const posts = dbPostData.map(post => post.get({ plain: true }));
-        res.render('dashboard', { posts, loggedIn: true });
+        res.render('dashboard', { layout: "dashboard", posts, loggedIn: true });
     })
     .catch(err => {
         console.log(err);
@@ -36,6 +36,12 @@ router.get('/', withAuth, (req, res) => {
     });
 });
   
+router.get("/add", withAuth, (req, res) => {
+  res.render("add-post", {
+      layout: "dashboard"
+  });
+});
+
 router.get('/edit/:id', withAuth, (req, res) => {
     Post.findByPk(req.params.id, {
       attributes: ['id', 'post_url', 'title', 'contents', 'created_at'],
