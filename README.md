@@ -30,8 +30,7 @@ OR
 
 ## Usage
 _If the app was cloned_, in your terminal, navigate to your project directory and run `npm start` and then navigate to this link: http://localhost:3001/ OR use the [Heroku link](https://tech-blog-app-mvc.herokuapp.com/)
-* User will be able to add notes by providing note's title and description (text)
-* User will also be able to save (even when the user refresh the page) and delete notes
+* User will be able to add and delete posts, and comment to other posts
 
 ## Screenshots
 ![image](https://user-images.githubusercontent.com/80712058/133734054-147f44ba-d3f1-4d0f-9a26-0162998d6c52.png)
