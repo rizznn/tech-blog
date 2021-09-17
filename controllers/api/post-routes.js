@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Post, User, Comment } = require('../../models');
+const { User, Comment } = require('../../models');
+const  Post = require('../../models/Post');
 const withAuth = require('../../utils/auth');
 
 // get all posts
@@ -68,19 +69,22 @@ router.get('/:id', (req, res) => {
 });
 
 // create a post
-router.post('/', withAuth, (req, res) => {
+router.post('/', withAuth, async (req, res) => {
     // expects {title: 'Taskmaster goes public!', contents: 'Taskmaster is an app to organize tasks', post_url: 'https://taskmaster.com/press', user_id: 1}
-    Post.create({
+    try {
+    const dbPostData = await Post.create({
       title: req.body.title,
       contents: req.body.contents,
       post_url: req.body.post_url,
       user_id: req.session.user_id
     })
-      .then(dbPostData => res.json(dbPostData))
-      .catch(err => {
+        console.log(dbPostData)
+        return res.json(dbPostData)
+  }
+      catch(err) {
         console.log(err);
         res.status(500).json(err);
-      });
+      };
 });
 
 // Because we'll be updating an existing entry, the idea is to first retrieve the post instance by id, then alter the value of the title on this instance of a post
