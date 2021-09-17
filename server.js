@@ -29,7 +29,6 @@ const sess = {
 };
 
 app.use(session(sess));
-console.log("hello");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
