@@ -19,6 +19,33 @@
   </form>
 </section>
 
-{{#if loggedIn}}
-<script src="/javascript/add-post.js"></script>
+{{#if posts.length}}
+<section>
+  <h2>Your Posts</h2>
+  <ol>
+    {{#each posts}}
+    <li>
+       <ol class="post-list">
+        <li>
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+              <a class="post-title" href="{{post_url}}">{{title}}</a>
+              <span class="author"> {{format_date created_at}}</span>
+            </div>
+            <div class="card-body">
+              {{contents}}
+            </div>
+          </div>
+        </li>
+    </ol>
+  </section>
+      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+    </li>
+    {{/each}}
+  </ol>
+</section>
 {{/if}}
+
+<script src="/javascript/add-post.js"></script>
+

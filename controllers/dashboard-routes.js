@@ -38,7 +38,6 @@ router.get('/', withAuth, (req, res) => {
   
 router.get("/add", withAuth, (req, res) => {
   res.render("add-post", {
-      layout: "dashboard"
   });
 });
 
@@ -65,7 +64,6 @@ router.get('/edit/:id', withAuth, (req, res) => {
             const post = dbPostData.get({ plain: true });
             
             res.render('edit-post', {
-                layout: dashboard,
                 post,
                 loggedIn: true
             });

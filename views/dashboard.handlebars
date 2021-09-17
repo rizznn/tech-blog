@@ -6,7 +6,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header home-post">            
-              <a class="dash-post-title" href="/dashboard/edit/{{post.id}}">{{title}}</a>
+              <a class="dash-post-title" href="/dashboard/edit/{{id}}">{{title}}</a>
               <span class="author"> {{format_date created_at}}</span>
             </div>
           </div>
@@ -18,5 +18,6 @@
 
 {{#if loggedIn}}
 <script src="/javascript/edit-post.js"></script>
-<script src="/javascript/comment.js"></script>
+<script src="/javascript/delete-post.js"></script>
 {{/if}} 
+

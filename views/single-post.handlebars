@@ -1,35 +1,5 @@
 {{!-- posts --}}
 {{> post-info post }}
-{{!-- 
- <ol class="post-list">
-      {{#each posts as |posts|}}
-      <li>
-      <div class="col-12">
-      <div class="card">
-        <div class="card-header"> --}}
-
-          {{!-- <a href="/dashboard/edit/{{id}}" class="edit-title">{{title}}</a> --}}
-        
-          {{!-- <a href="/dashboard/edit/{{post.id}}">{{title}}</a> --}}
-          {{!-- <span class="title">{{title}}</span> --}}
-          {{!-- <span class="author"> {{format_date created_at}}</span>
-        </div>
-      </div>
-        </li>
-        {{/each}}
-  </ol> --}}
-
-{{!-- <article class="post">
-    <div class="title">
-        <a href="{{post_url}}" target="_blank">{{title}}</a>
-        <span>({{format_url post_url}})</span>
-    </div>
-    <div class="meta">
-        Posted by {{user.username}} on {{format_date created_at}}
-        |
-        <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
-    </div>
-</article> --}}
 
 {{!-- form and comments --}}
 {{#if loggedIn}}
@@ -57,7 +27,6 @@
 {{> comments post.comments}}
 
 {{!-- to conditionally render the <script> element --}}
-
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
 {{/if}} 
